@@ -1,0 +1,15 @@
+name: Self-Hosted Runner Test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: [self-hosted, sample]  # Ensure it matches your runner's labels
+    steps:
+      - name: Print runner info
+        run: |
+          echo "Runner is online!"
+          uname -a
