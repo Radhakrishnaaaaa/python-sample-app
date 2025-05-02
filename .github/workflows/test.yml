@@ -3,7 +3,7 @@ name: CI/CD for Python App on Self-Hosted Runner
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build-and-deploy:
