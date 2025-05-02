@@ -1,4 +1,4 @@
-name: Self-Hosted Runner Test
+name: CI/CD for Python App on Self-Hosted Runner
 
 on:
   push:
@@ -6,10 +6,26 @@ on:
       - main
 
 jobs:
-  test:
-    runs-on: [self-hosted, sample]  # Ensure it matches your runner's labels
+  build-and-deploy:
+    runs-on: [self-hosted, sample]  # Match your runner labels
+
     steps:
-      - name: Print runner info
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Set up virtual environment
         run: |
-          echo "Runner is online!"
-          uname -a
+          python3 -m venv venv
+          source venv/bin/activate
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run the app (Dev Server)
+        run: |
+          source venv/bin/activate
+          python manage.py runserver 0.0.0.0:8000
