@@ -6,4 +6,4 @@ python3 -m venv /app/venv
 . /app/venv/bin/activate
 /app/venv/bin/pip install -r requirements.txt
 cd devops
-python3 manage.py runserver 0.0.0.0:8000
+python3 manage.py runserver 0.0.0.0:8000 &
