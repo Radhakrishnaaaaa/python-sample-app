@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-and-deploy:
-    runs-on: [self-hosted, sample]  # Match your runner labels
+    runs-on: [self-hosted, sample] 
 
     steps:
       - name: Checkout code
